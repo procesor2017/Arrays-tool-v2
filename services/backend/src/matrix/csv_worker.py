@@ -23,7 +23,7 @@ class CsvWorker:
                 return self.three_on_x
             
     
-    def get_matrix(self, table_type: int):
+    def get_matrix(self, table_type: int, start_row: int):
         """Method for returning matrix from csv
 
         Args:
@@ -34,9 +34,11 @@ class CsvWorker:
         
         with open(self._return_table_type(table_type), encoding="utf-8") as file:
             csv_reader = csv.reader(file)
-            for row in csv_reader:
-                items.append(row)
-
-
-a = CsvWorker()
-a.get_matrix(0)
+            # rows = [row for id, row in enumerate(csv_reader) if id in range(0, 10)]
+            for row in (r for i, r in enumerate(csv_reader) if i in range(start_row,999)):
+                if row == []:
+                    break
+                else:
+                    items.append(row)
+            
+        return items
