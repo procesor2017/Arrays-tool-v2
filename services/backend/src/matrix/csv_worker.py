@@ -3,17 +3,14 @@
 Class for works with csv
 """
 import csv
-import logging
-import os
 
 
 class CsvWorker:
     """_summary_
     """
     def __init__(self):
-        self.two_on_x = "services/backend/src/matrix_csv/2onX.csv"
-        self.three_on_x = "services/backend/src/matrix_csv/matrix_csv/3onX.csv"
-        self.a_a = ""
+        self.two_on_x = "./matrix_csv/2onX.csv"
+        self.three_on_x = "./matrix_csv/3onX.csv"
     
     def _return_table_type(self, type_of_table: int):
         match type_of_table:
