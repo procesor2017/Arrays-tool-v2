@@ -1,10 +1,8 @@
+# pylint: disable=pointless-string-statement
 """
 Class for getting together csv and user input
 """
-# from .csv_worker import CsvWorker # for normal
-from matplotlib.pyplot import table
-from tomlkit import value
-from csv_worker import CsvWorker # For develop
+from . import csv_worker
 
 # User payload test [{"0":"a","1":"aa","2":"aaa"},{"0":"b","1":"bb","2":"bbb"}] -> [[a,aa,aaa],[b,bb,bbb]] -> 2 rows and 3 columns
 # [{"0":"a","1":"aa","2":"aaa","3":"aaaa","4":"aaaaa"},{"0":"b","1":"bb","2":"bbb","3":"bbbb","4":"bbbbb"},{"4":"ccccc"},{"4":"ddddd"}]
@@ -19,9 +17,9 @@ def create_orto(table_type, start_row, user_input):
         start_row (_type_): where table start in csv
         user_input (_type_): table which user send me
     """
-    csv = CsvWorker()
+    csv = csv_worker.CsvWorker()
     load_arr = csv.get_matrix(table_type, start_row)
-    # print(load_arr)  
+    # print(load_arr)
     # # [['0', '0', '0'], ['0', '1', '1'], ['1', '0', '1'], ['1', '1', '0']]
     # [['0', '0', '1', '1', '2'], ['0', '1', '0', '1', '1'], ['0', '1', '1', '0', '3'], ['1', '0', '0', '1', '3'], ['1', '0', '1', '0', '1'], ['1', '1', '0', '0', '2'], ['1', '1', '1', '1', '0']]
     print(load_arr)
@@ -68,35 +66,38 @@ def get_matrix_type(user_input: list):
     for i in value_list:
         n_number[i] = value_list.count(i)
 
-    print(n_number)
     return n_number
         
 
 def choose_and_return_matrix(user_input: list):
     
-    table_type = get_matrix_type(user_input)
+    table_type = list(get_matrix_type(user_input).items())
     
-        
-    print(len(table_type))
+    print(table_type) # {2: 4, 4: 1}
+    
     if len(table_type) <= 1:
         """
         Table which have 2 different n_var in row
         2^3 ; 4^5 ; 3^4; 2^11 
         """
-        print("tu")
+        if table_type[0][0] <= 2 and table_type[0][1] <=3:
+            return create_orto(0,1, user_input)  # 2^3
     elif len(table_type) <= 2:
         """
         Table which have 2 different n_var in row
         2^4 4^1 ; 2^4 3^1 ; 2^8 8^1
         """
-        pass
+        if table_type[0][0] <= 2 and table_type[0][1] <=4:
+            if table_type[1][0] <= 4 and table_type[1][1] <=1:
+                return create_orto(0,8, user_input)  # 2^4 4^1
     else:
-        """ More than 2
-        """
+        """ More than 2 """
         pass
-    
-    
-    create_orto(0,1, user_input)
-    
-    
-choose_and_return_matrix([{"0":"a","1":"aa","2":"aaa","3":"aaaa","4":"aaaaa"},{"0":"b","1":"bb","2":"bbb","3":"bbbb","4":"bbbbb"},{"4":"ccccc"},{"4":"ddddd"}])
+
+def joke():
+    a = "ahoj"
+    return a
+
+
+
+# choose_and_return_matrix([{"0":"a","1":"aa","2":"aaa","3":"aaaa","4":"aaaaa"},{"0":"b","1":"bb","2":"bbb","3":"bbbb","4":"bbbbb"},{"4":"ccccc"},{"4":"ddddd"}])

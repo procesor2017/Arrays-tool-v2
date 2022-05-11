@@ -1,4 +1,4 @@
-"""Unit test for create matrix"""
+"""Unit test for create modules"""
 import unittest
 from matrix.create_matrix import create_orto
 

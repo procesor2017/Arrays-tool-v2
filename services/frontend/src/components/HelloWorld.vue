@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <p>{{ msg }}</p>
+  <div id="app">
+      {{msg}}
+  <input v-model="msg"> 
+  <button @click="getTable">getTable</button>
   </div>
 </template>
 
@@ -8,15 +10,14 @@
 import axios from 'axios';
 
 export default {
-  name: 'Ping',
   data() {
     return {
       msg: '',
     };
   },
   methods: {
-    getMessage() {
-      axios.get('/')
+    getTable() {
+      axios.get('/',)
         .then((res) => {
           this.msg = res.data;
         })
@@ -24,9 +25,6 @@ export default {
           console.error(error);
         });
     },
-  },
-  created() {
-    this.getMessage();
   },
 };
 </script>

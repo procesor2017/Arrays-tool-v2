@@ -1,13 +1,11 @@
-FROM python:3.9-buster
+FROM python:3.10
 
-RUN mkdir app
-WORKDIR /app
+WORKDIR /src
 
-ENV PATH="${PATH}:/root/.local/bin"
-ENV PYTHONPATH=.
+COPY requirements.txt /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY src /src/app
+COPY src/modules/matrix_csv /src/app/modules/matrix_csv
 
-COPY src/ .
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]

@@ -3,25 +3,26 @@
 Class for works with csv
 """
 import csv
-
+import os
+from os import listdir
 
 class CsvWorker:
     """_summary_
     """
     def __init__(self):
-        self.two_on_x = "./matrix_csv/2onX.csv"
-        self.three_on_x = "./matrix_csv/3onX.csv"
+        self.two_on_x = "app/modules/matrix_csv/2onX.csv"
+        self.three_on_x = "app/modules/matrix_csv/2onX.csv"
     
     def _return_table_type(self, type_of_table: int):
+        print(os.listdir())
         match type_of_table:
             case 0:
                 return self.two_on_x
             case 1:
                 return self.three_on_x
-            
-    
+
     def get_matrix(self, table_type: int, start_row: int):
-        """Method for returning matrix from csv
+        """Method for returning modules from csv
 
         Args:
             table_type (int): 0 = two on X, 1 three on x
@@ -37,5 +38,4 @@ class CsvWorker:
                     break
                 else:
                     items.append(row)
-            
         return items
