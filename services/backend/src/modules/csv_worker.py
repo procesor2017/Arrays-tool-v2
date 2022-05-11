@@ -10,8 +10,15 @@ class CsvWorker:
     """_summary_
     """
     def __init__(self):
-        self.two_on_x = "app/modules/matrix_csv/2onX.csv"
-        self.three_on_x = "app/modules/matrix_csv/2onX.csv"
+        """
+        Path for single docker:
+        "app/modules/matrix_csv/2onX.csv"
+
+        Path for compose:
+        "./src/modules/matrix_csv/2onX.csv"
+        """
+        self.two_on_x = "./src/modules/matrix_csv/2onX.csv"
+        self.three_on_x = "./src/modules/matrix_csv/2onX.csv"
     
     def _return_table_type(self, type_of_table: int):
         print(os.listdir())
