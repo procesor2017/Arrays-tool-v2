@@ -5,11 +5,269 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+.body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto Slab",serif;
+}
+
+.main-menu{
+    position: -webkit-sticky; /* For safari */
+    position: sticky;
+    top: 0;
+    background-color: transparent;
+    z-index: 1;
+    margin: 0px auto -150px;
+}
+
+.scroll {
+    background-color: #0f5591;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+ul.topnav li {
+    float: left;
+    height: 100%;
+}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+    height: 100%;
+    font-family: "Roboto Slab",serif;
+}
+
+ul.topnav li a:hover:not(.active) {color: rgb(48, 47, 47);}
+
+ul.topnav li a.active {background-color: #04AA6D;}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px) {
+    ul.topnav li.right, 
+    ul.topnav li {float: none;}
+}
+
+.main-body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: "Roboto Slab",serif;
+}
+
+.index-div{
+    width: 100%;
+    height: 110vh;
+    color: white;
+    background: linear-gradient(130deg,#65b22e,#00558b);
+    background-size: 200% 200%;
+    -webkit-animation: Animation 30s ease infinite;
+    -moz-animation: Animation 30s ease infinite;
+    animation: Animation 30s ease infinite;
+}
+
+@-webkit-keyframes Animation {
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}
+@-moz-keyframes Animation {
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}
+@keyframes Animation { 
+    0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}
+
+.index-div-left{
+    float: left;
+    width: 49%;
+    padding-left: 5%;
+    color: white !important;
+    font-size: 24pt;
+    padding-top: 30%;
+}
+
+h1{
+    font-size: 50pt;
+    color: white !important;
+}
+
+.index-div-right{
+    float: right;
+    text-align: right;
+    width: 45%;
+    height: 100%;
+    background-image: url("https://www.tesena.com/files/hero-bg-responsive.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    
+}
+
+#guide{   
+    align-items: center; padding: 10px;
+    text-align: center;
+}
+
+/* Input table */
+
+.input-table{
+    text-align: center;
+    top: 100vh;
+    font-family: "Roboto Slab",serif;
+}
+
+.button-menu-table{
+    margin: 0 auto;
+    text-align: center;
+    width: 820px;
+}
+
+.div-menu{
+    width: 110px;
+    float: left;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #65b230;
+    background-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin: 10px;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+
+.div-menu-blue{
+    width: 110px;
+    float: left;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #0f5591;
+    background-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin: 10px;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+
+#myTable{  
+    margin: auto;
+    width: 50%;
+    padding: 2px;
+    border-collapse: collapse;
+    
+}
+
+input {
+    border: 2px solid #0f5591;
+    outline: none;
+    font-family: "Roboto Slab",serif;
+}
+
+/* Result table */
+.result-table{
+    text-align: center;
+    font-family: "Roboto Slab",serif;
+}
+
+#responseTable{   
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;}
+
+#responseTable td{border: 1px solid #000; align-items:center;padding: 10px; }
+
+.list-of-table {
+    align-items: center; padding: 10px;
+    text-align: center;
+}
+
+.download-button{
+    margin: auto;
+    width: 110px;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #65b230;
+    background-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+
+.footer{
+    text-align: center;
+    width: 100%;
+    background-color: #0f5591 !important;
+}
+
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    background: #0f5591;
+    color: white;
+  }
+  
+.btn-radius-border {
+    float: left;
+    border-style: solid;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: #65b230;
+    font-weight: 700;
+    font-size: 15px;
+    align-items: center;
+    padding-left: 1.6em;
+    padding-right: 1.6em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    text-decoration: none;
+    color:white;
+    cursor: pointer;
+}
+
+.btn-radius-border a {
+    text-decoration: none;
 }
 </style>
