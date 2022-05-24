@@ -15,7 +15,8 @@
 
 .main-menu{
     position: -webkit-sticky; /* For safari */
-    position: sticky;
+    position: fixed;
+    width:99vw;
     top: 0;
     background-color: transparent;
     z-index: 1;

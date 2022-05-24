@@ -1,20 +1,29 @@
+<style scoped>
+   .change_color {
+       background-color:#0f5591;
+   }
+</style>
+
 <template>
   <div id="app">
-
-        <div class ="main-menu" id="main-menu">
-            <ul class="topnav">
-            <li><a href="#" class="main-menu-href">HOME</a></li>
-            <li><a href="#guide" class="main-menu-href">Guide</a></li>
-            <li><a href="#input-table" class="main-menu-href">INPUT TABLE</a></li>
-            <li><a href="#result-table" class="main-menu-href">RESPONSE TABLE</a></li>
-            <li><a href="https://www.tesena.com/en/contact" class="main-menu-href">CONTACT</a></li>
-            <li style="float:right; padding: 0;"><a href="https://www.tesena.com/en" class="main-menu-href" style="float:right; padding: 12px; height: 100%;">
-                <svg width="150px" height="40px" float="right" >       
-                <image xlink:href="https://www.tesena.com/files/logo-tesena.svg" width="150px" height="40px" float="right"/>    
-                </svg>
-            </a></li>
-            </ul>
-        </div>
+        <b-navbar class="header" fixed="top">
+                <div class ="main-menu" id="main-menu">
+                    <nav :class="{change_color: scrollPosition > 500}">
+                        <ul class="topnav">
+                        <li><a href="#" class="main-menu-href">HOME</a></li>
+                        <li><a href="#guide" class="main-menu-href">Guide</a></li>
+                        <li><a href="#input-table" class="main-menu-href">INPUT TABLE</a></li>
+                        <li><a href="#result-table" class="main-menu-href">RESPONSE TABLE</a></li>
+                        <li><a href="https://www.tesena.com/en/contact" class="main-menu-href">CONTACT</a></li>
+                        <li style="float:right; padding: 0;"><a href="https://www.tesena.com/en" class="main-menu-href" style="float:right; padding: 12px; height: 100%;">
+                            <svg width="150px" height="40px" float="right" >       
+                            <image xlink:href="https://www.tesena.com/files/logo-tesena.svg" width="150px" height="40px" float="right"/>    
+                            </svg>
+                        </a></li>
+                        </ul>
+                    </nav>
+                </div>
+        </b-navbar>
 
         <div class="main-body">
             <div class="index-div">
@@ -89,5 +98,22 @@
 </template>
 
 <script>
+export default {
+    name: "Header",
+    data: function() {
+        return{
+            scrollPosition: 0
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', this.updateScroll);
+    },
+    methods: {
+        updateScroll() {
+            this.scrollPosition = window.scrollY
+        }
+    },
+
+};
 
 </script>
