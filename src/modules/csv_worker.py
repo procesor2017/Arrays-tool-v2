@@ -18,7 +18,7 @@ class CsvWorker:
         "./src/modules/matrix_csv/2onX.csv"
         """
         self.two_on_x = "./src/modules/matrix_csv/2onX.csv"
-        self.three_on_x = "./src/modules/matrix_csv/2onX.csv"
+        self.three_on_x = "/src/modules/matrix_csv/2onX.csv"
     
     def _return_table_type(self, type_of_table: int):
         print(os.listdir())

@@ -36,8 +36,6 @@ def create_orto(table_type, start_row, user_input):
             
         y =0
         x +=1
-
-    print(matrix)
     return matrix
 
 def get_matrix_type(user_input: list):
@@ -93,10 +91,6 @@ def choose_and_return_matrix(user_input: list):
     else:
         """ More than 2 """
         pass
-
-def joke():
-    a = "ahoj"
-    return a
 
 
 
