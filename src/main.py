@@ -24,6 +24,10 @@ class Input(BaseModel):
 def home(request: Request):
     return template.TemplateResponse("index.html", {"request": request})
 
+@app.get("/cs", response_class=HTMLResponse)
+def home(request: Request):
+    return template.TemplateResponse("index_cs.html", {"request": request})
+
 @app.post("/getInformation")
 async def getInformation(input: Input):
     a = jsonable_encoder(input)

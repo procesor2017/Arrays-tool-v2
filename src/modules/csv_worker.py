@@ -18,15 +18,20 @@ class CsvWorker:
         "./src/modules/matrix_csv/2onX.csv"
         """
         self.two_on_x = "./src/modules/matrix_csv/2onX.csv"
-        self.three_on_x = "/src/modules/matrix_csv/2onX.csv"
+        self.three_on_x = "./src/modules/matrix_csv/3onX.csv"
+        self.four_on_x = "./src/modules/matrix_csv/4onX.csv"
+        self.five_on_x = "./src/modules/matrix_csv/5onX.csv"
     
     def _return_table_type(self, type_of_table: int):
-        print(os.listdir())
         match type_of_table:
             case 0:
                 return self.two_on_x
             case 1:
                 return self.three_on_x
+            case 2:
+                return self.four_on_x
+            case 3:
+                return self.five_on_x
 
     def get_matrix(self, table_type: int, start_row: int):
         """Method for returning modules from csv

@@ -31,7 +31,10 @@ def create_orto(table_type, start_row, user_input):
     y=0
     for i in load_arr:
         for j in i:
-            matrix[x][y] = user_input[int(j)][str(y)] # user_input[int(j)][str(y)] # První mi z load_arr načte na jakém řádku je ta daná hodnota
+            try:
+                matrix[x][y] = user_input[int(j)][str(y)] # user_input[int(j)][str(y)] # První mi z load_arr načte na jakém řádku je ta daná hodnota
+            except:
+                matrix[x][y] = None
             y+=1
             
         y =0
@@ -80,16 +83,69 @@ def choose_and_return_matrix(user_input: list):
         """
         if table_type[0][0] <= 2 and table_type[0][1] <=3:
             return create_orto(0,1, user_input)  # 2^3
+        elif table_type[0][0] <= 2 and table_type[0][1] <=11:
+            return create_orto(0,17, user_input)  # 2^11 
+        elif table_type[0][0] <= 3 and table_type[0][1] <=4:
+            return create_orto(1,1, user_input)  # 3^4
+        elif table_type[0][0] <= 4 and table_type[0][1] <=5:
+            return create_orto(2,1, user_input)  # 4^5
+        elif table_type[0][0] <= 5 and table_type[0][1] <=6:
+            return create_orto(3,1, user_input)  # 5^6
     elif len(table_type) <= 2:
         """
         Table which have 2 different n_var in row
         2^4 4^1 ; 2^4 3^1 ; 2^8 8^1
         """
-        if table_type[0][0] <= 2 and table_type[0][1] <=4:
-            if table_type[1][0] <= 4 and table_type[1][1] <=1:
-                return create_orto(0,8, user_input)  # 2^4 4^1
-    else:
+        if table_type[0][0] <= 2 and table_type[0][1] <=2:
+            if table_type[1][0] <= 6 and table_type[1][1] <=1:
+                return create_orto(0,45, user_input)                # 2^2 6^1
+            elif table_type[1][0] <= 10 and table_type[1][1] <=1:
+                return create_orto(0,173, user_input)               # 2^2 10^1
+
+        elif table_type[0][0] <= 2 and table_type[0][1] <=4:
+            if table_type[1][0] <= 3 and table_type[1][1] <=1:
+                return create_orto(0,31, user_input)                # 2^4 3^1
+            elif table_type[1][0] <= 4 and table_type[1][1] <=1:
+                return create_orto(0,7, user_input)                 # 2^4 4^1
+        
+        elif table_type[0][0] <= 2 and table_type[0][1] <=8:
+            if table_type[1][0] <= 5 and table_type[1][1] <=1:
+                return create_orto(0,151, user_input)               # 2^8 5^1
+            elif table_type[1][0] <= 8 and table_type[1][1] <=1:
+                return create_orto(0,59, user_input)                # 2^8 8^1
+
+        elif table_type[0][0] <= 3 and table_type[0][1] <=6:
+            if table_type[1][0] <= 6 and table_type[1][1] <=1:
+                return create_orto(1,12, user_input)                # 3^6 6^1
+
+        elif table_type[0][0] <= 3 and table_type[0][1] <=9:
+            if table_type[1][0] <= 9 and table_type[1][1] <=1:
+                return create_orto(1,32, user_input)                # 3^9 9^1
+
+        elif table_type[0][0] <= 4 and table_type[0][1] <=8:
+            if table_type[1][0] <= 8 and table_type[1][1] <=1:
+                return create_orto(2,19, user_input)                # 4^8 8^1   
+
+
+    elif len(table_type) <= 3:
         """ More than 2 """
+        if table_type[0][0] <= 2 and table_type[0][1] <=3:
+            if table_type[1][0] <= 3 and table_type[1][1] <=2:
+                if table_type[2][0] <= 6 and table_type[2][1] <=3:
+                    return create_orto(0,233, user_input)           # 2^3 3^2 6^3 
+        elif table_type[0][0] <= 2 and table_type[0][1] <=4:
+            if table_type[1][0] <= 3 and table_type[1][1] <=1:
+                if table_type[2][0] <= 6 and table_type[2][1] <=3:
+                    return create_orto(0,195, user_input)           # 2^4 3^1 6^3 
+
+    elif len(table_type) <= 4:
+        """More Than 3"""
+        if table_type[0][0] <= 2 and table_type[0][1] <=5:
+            if table_type[1][0] <= 3 and table_type[1][1] <=3:
+                if table_type[2][0] <= 4 and table_type[2][1] <=1:
+                    if table_type[2][0] <= 6 and table_type[2][1] <=7:
+                        return create_orto(0,77, user_input)        # 2^5 3^3 4^1 6^7      
+    else:
         pass
 
 
