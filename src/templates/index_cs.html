@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>JS + Spring Data Rest</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', path='/script.js') }}"></script>
+    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="image/vnd.microsoft.icon" href="https://www.tesena.com/files/favicon.ico" rel="shortcut icon">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700&amp;subset=latin-ext&amp;display=swap" rel="stylesheet">
+  </head>
+
+<body>
+
+  <div class ="main-menu" id="main-menu">
+      <ul class="topnav">
+        <li><a href="#" class="main-menu-href">Úvod</a></li>
+        <li><a href="#guide" class="main-menu-href">Návod</a></li>
+        <li><a href="#input-table" class="main-menu-href">Arrays Tool</a></li>
+        <li><a href="https://www.tesena.com/en/contact" class="main-menu-href">Kontakt</a></li>
+        <li style="float:right; padding: 0;">
+          <a href="/" class="main-menu-href">EN</a>
+        </li>
+        <li style="float:right; padding: 0;"><a href="https://www.tesena.com/en" class="main-menu-href" style="float:right; padding: 12px; height: 100%;">
+          <svg width="150px" height="40px" float="right" >       
+            <image xlink:href="https://www.tesena.com/files/logo-tesena.svg" width="150px" height="40px" float="right"/>    
+          </svg>
+        </a></li>
+      </ul>
+  </div>
+  <div class="main-body">
+    
+    <div class="index-div">
+      
+      <div class="index-div-left">
+        <h1>Testing 360°</h1>
+        Všechny své aktivity soustředíme na testování. </p>
+        <a href="https://www.tesena.com/en">
+          <div class="btn-radius-border">
+            CHCI VĚDĚT VÍC
+          </div>
+        </a>
+        
+      </div>
+      <div class="index-div-right"></div>
+    </div>
+
+    <div class="guide" id="guide">
+      <h2 class="web-h2">Guide</h2>
+      Je nástroj, který slouží k optimalizaci testovací sady pomocí techniky Ortogonálních matic (link: https://www.algoritmy.net/article/24654/Ortogonalni-pole). </p>
+
+      Každý sloupec ve vstupní tabulce reprezentuje jednu proměnnou, respektive hodnoty, kterých může tato proměnná nabývat.  </br>      
+      Počet sloupců tedy bude odpovídat počtu proměnných, které potřebujeme kombinovat. Počet řádků pak odpovídá nejvyššímu počtu hodnot, kterých může některá z těchto proměnných nabývat.</br>      </p> 
+      Tip: Pokud proměnné nenabývají shodného počtu hodnot, doplňte prázdná pole ve sloupci jednou či více hodnotami, které již tento sloupec obsahuje – zopakujte některé ze zadaných hodnot proměnné. </br>      
+      Ve výstupní tabulce naleznete výslednou sadu testovacích scénářů, kde jeden řádek = 1 test. Obsahuje-li některý ze sloupců pouze hodnoty null, nejedná se o chybu, ale o specifický tvar použité ortogonální matice. Takovýto sloupec ignorujte. </br>
+      
+      Tip: Tuto sadu doporučujeme před použitím pečlivě projít, vyškrtat kombinace, které nemohou nikdy nastat a doplnit sadu o další byznysově zajímavé kombinace</br>
+    </div>
+
+    <div class="input-table" id="input-table">
+      <h2 class="web-h2">Vstupní tabulka</h2>
+      <div class="button-menu-table">
+        <div id="addRowChild" class="div-menu">Přidej proměnou</div>
+        <div id="addColumnChild" class="div-menu">Přidej hodnotu</div>
+        <div id="removeRow" class="div-menu">Odeber proměnnou</div>
+        <div id="removeColumn" class="div-menu">Odeber hodnotu</div>
+        <div id="sendData" class="div-menu-blue">Generuj</button>
+      </div>
+      <table id="myTable" class="myTable">
+          <thead id="myTableHeader">
+          </thead>
+          <tbody id="myTableBody">
+            <tr id="default-row">
+              <td><input></input></td>
+              <td><input></input></td>
+              <td><input></input></td>
+            </tr>
+            <tr>
+              <td><input></input></td>
+              <td><input></input></td>
+              <td><input></input></td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+    <div class="result-table" id="result-table">
+      <h2>Výstupní tabulka</h2>
+      <table id="responseTable">
+        <tbody id="responseTableBody"></tbody>
+          <div id="warning-text"></div>
+      </table> 
+      <div id="download-button"></div>
+    </div>
+  </div>
+  <div class="footer" id="footer">
+    <a href="https://www.facebook.com/tesena.smart.testing/" class="fa fa-facebook"></a>
+    <a href="https://www.instagram.com/jsmetesena/?utm_medium=copy_link" class="fa fa-instagram"></a>
+    <a href="https://www.youtube.com/channel/UCXAYaVsc9AocWpVzHiGXtHQ" class="fa fa-youtube"></a>
+    <a href="https://www.linkedin.com/company/tesena/" class="fa fa-linkedin"></a>
+  </div>
+</body>
+<script>
+  var myNav = document.getElementById("main-menu");
+  console.log(myNav);
+  window.onscroll = function() {
+    "use strict";
+    if (document.body.scrollTop >= 280 || document.documentElement.scrollTop >= 280) {
+      myNav.classList.add("scroll");
+    } else {
+      myNav.classList.remove("scroll");
+    }
+  };
+</script>
+</html>
