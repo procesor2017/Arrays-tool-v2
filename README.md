@@ -9,7 +9,7 @@ Arrasy tool is simple tool for using orthogonal table in testing.
 There is Python version.
 
 ## Stack
-Fast + VueJS in Docker compose
+Fast + Pure JS
 
 ## How to start
 ```
